@@ -1,0 +1,29 @@
+---
+version: '3'
+
+
+services:
+ "mydb": 
+  "image": "mysql"
+  "enivonment": 
+  "MYSQL_ROOT_PASSWORD": "raju123"
+
+ "apache":
+   "image": "httpd" 
+   "ports":
+   - "9090::80"
+   "links":
+   - "mydb": "mysql"
+ 
+ 
+ "php":
+   "image": "php:7.2-apach"
+   "links":
+    - "mydb": "mysql"
+    - "apache": "httpd" 
+     
+
+...         
+
+              
+
